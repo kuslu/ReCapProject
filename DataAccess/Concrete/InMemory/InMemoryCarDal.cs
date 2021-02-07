@@ -37,7 +37,7 @@ namespace DataAccess.Concrete.InMemory
                 new Car {Id=7, BrandId=1, ColorId=2, DailyPrice=10000, ModelYear="2018", Description="120.000Km'de Beyaz Mercedes GLC"},
             };
         }
-        public void Add(Car car)
+        public void Add(Car car) 
         {
             _cars.Add(car);
         }
