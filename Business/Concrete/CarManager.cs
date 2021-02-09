@@ -16,10 +16,30 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public void Add(Car car)
+        {
+            _carDal.Add(car);
+        }
+
+        public void Delete(int carId)
+        {
+            _carDal.Delete(carId);
+        }
+
         public List<Car> GetAll()
         {
             //iş kodları
             return _carDal.GetAll();
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
+        }
+
+        public Car GetById(int carId)
+        {
+            return _carDal.GetById(carId);
         }
     }
 }

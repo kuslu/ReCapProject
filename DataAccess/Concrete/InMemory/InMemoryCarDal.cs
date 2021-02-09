@@ -42,9 +42,9 @@ namespace DataAccess.Concrete.InMemory
             _cars.Add(car);
         }
 
-        public void Delete(Car car)
+        public void Delete(int carId)
         {
-            Car carToDelete = _cars.SingleOrDefault(p=>p.Id==car.Id);
+            Car carToDelete = _cars.SingleOrDefault(p=>p.Id==carId);
             _cars.Remove(carToDelete);
         }
 
@@ -55,7 +55,7 @@ namespace DataAccess.Concrete.InMemory
 
         public Car GetById(int carId) //Kullanıcı sadece CarId gönderirse CarId (int) göre arama yap
         {
-            return _cars.SingleOrDefault(p => p.Id == carId);
+            return _cars.SingleOrDefault(c => c.Id == carId);
         }
 
         /*
