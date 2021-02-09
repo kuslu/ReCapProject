@@ -48,14 +48,23 @@ namespace DataAccess.Concrete.InMemory
             _cars.Remove(carToDelete);
         }
 
-        public List<Car> GetAll()
+        public List<CarDTO> GetAll()
         {
-            return _cars;
+            var result = from ca in _cars
+                         join b in _brands on ca.BrandId equals b.BrandId
+                         join c in _colors on ca.ColorId equals c.ColorId
+                         select new CarDTO { Id= ca.Id, BrandName= b.BrandName, CarColor= c.CarColor, ModelYear= ca.ModelYear, DailyPrice =ca.DailyPrice, Description= ca.Description };
+            return result.ToList(); 
         }
 
-        public Car GetById(int carId) //Kullanıcı sadece CarId gönderirse CarId (int) göre arama yap
+        public CarDTO GetById(int carId) //Kullanıcı sadece CarId gönderirse CarId (int) göre arama yap
         {
-            return _cars.SingleOrDefault(c => c.Id == carId);
+            var result = from ca in _cars
+                         join b in _brands on ca.BrandId equals b.BrandId
+                         join c in _colors on ca.ColorId equals c.ColorId
+                         select new CarDTO { Id = ca.Id, BrandName = b.BrandName, CarColor = c.CarColor, ModelYear = ca.ModelYear, DailyPrice = ca.DailyPrice, Description = ca.Description };
+
+            return result.SingleOrDefault(c => c.Id == carId);
         }
 
         /*

@@ -34,7 +34,7 @@ namespace ConsoleUI
         {
             foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(car.BrandId + " : " + car.ColorId + " : " + car.Description + " : " + car.Description);
+                Console.WriteLine("{0} \t : {1} \t : {2} \t : {3}",car.BrandName, car.CarColor, car.ModelYear, car.Description);
             }
         }
     }

@@ -26,7 +26,7 @@ namespace Business.Concrete
             _carDal.Delete(carId);
         }
 
-        public List<Car> GetAll()
+        public List<CarDTO> GetAll()
         {
             //iş kodları
             return _carDal.GetAll();
@@ -37,7 +37,7 @@ namespace Business.Concrete
             _carDal.Update(car);
         }
 
-        public Car GetById(int carId)
+        public CarDTO GetById(int carId)
         {
             return _carDal.GetById(carId);
         }

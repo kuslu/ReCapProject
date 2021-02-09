@@ -7,8 +7,8 @@ namespace DataAccess.Abstract
 {
     public interface ICarDal
     {
-        Car GetById(int CarId);
-        List<Car> GetAll();
+        CarDTO GetById(int CarId);
+        List<CarDTO> GetAll();
         void Add(Car car);
         void Update(Car car);
         void Delete(int carId);
