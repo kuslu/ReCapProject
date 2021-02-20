@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -9,8 +10,17 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetByCarPrice(10000,15000) )
+            {
+                Console.WriteLine("{0} - {1} - {2} - {3} - {4} - {5}",car.Id, car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice, car.Description);
+            }
 
+            //InMemorydenCalisma(carManager);           
+        }
+
+        private static void InMemorydenCalisma(CarManager carManager)
+        {
             Console.WriteLine("Eklendikten sonraki liste");
             Car car1 = new Car { Id = 8, BrandId = 1, ColorId = 2, DailyPrice = 5000, ModelYear = "2014", Description = "Eklenen Araba 1" };
             carManager.Add(car1);
@@ -25,16 +35,15 @@ namespace ConsoleUI
             carManager.GetById(8);
 
             Console.WriteLine("Silindikten Sonraki Liste");
-            carManager.Delete(8);
+            //carManager.Delete(8);
             ListCars(carManager);
-
         }
 
         private static void ListCars(CarManager carManager)
         {
             foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine("{0} \t : {1} \t : {2} \t : {3}",car.BrandName, car.CarColor, car.ModelYear, car.Description);
+                Console.WriteLine(car.Description);
             }
         }
     }

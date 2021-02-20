@@ -21,12 +21,12 @@ namespace Business.Concrete
             _carDal.Add(car);
         }
 
-        public void Delete(int carId)
+        public void Delete(Car car)
         {
-            _carDal.Delete(carId);
+            _carDal.Delete(car);
         }
 
-        public List<CarDTO> GetAll()
+        public List<Car> GetAll()
         {
             //iş kodları
             return _carDal.GetAll();
@@ -37,9 +37,14 @@ namespace Business.Concrete
             _carDal.Update(car);
         }
 
-        public CarDTO GetById(int carId)
+        public List<Car> GetById(int carId)
         {
-            return _carDal.GetById(carId);
+            return _carDal.GetAll(p => p.Id == carId);
+        }
+
+        public List<Car> GetByCarPrice(int min, int max)
+        {
+            return _carDal.GetAll(p=> p.DailyPrice>=min && p.DailyPrice<=max);
         }
     }
 }
