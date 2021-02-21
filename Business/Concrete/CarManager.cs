@@ -17,7 +17,7 @@ namespace Business.Concrete
         }
 
         public void Add(Car car)
-        {
+        {            
             _carDal.Add(car);
         }
 
@@ -37,7 +37,7 @@ namespace Business.Concrete
             _carDal.Update(car);
         }
 
-        public List<Car> GetById(int carId)
+        public List<Car> GetByBrandId(int carId)
         {
             return _carDal.GetAll(p => p.Id == carId);
         }
@@ -45,6 +45,16 @@ namespace Business.Concrete
         public List<Car> GetByCarPrice(int min, int max)
         {
             return _carDal.GetAll(p=> p.DailyPrice>=min && p.DailyPrice<=max);
+        }
+
+        public List<Car> GetByColorId(int colorId)
+        {
+            return _carDal.GetAll(p => p.ColorId == colorId);
+        }
+
+        public List<CarDTO> GetCarDTOs(int carId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

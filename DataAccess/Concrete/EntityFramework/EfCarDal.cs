@@ -9,10 +9,11 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfCarDal : ICarDal
+    public class EfCarDal : IEntityRepository<Car>
     {
         public void Add(Car entity)
         {
+            
             using (ReCapContext context= new ReCapContext())
             {
                 var addedEntity = context.Entry(entity);//Referansı yakapalama
@@ -25,7 +26,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (ReCapContext context = new ReCapContext())
             {
-                var deletedEntity = context.Entry(entity);//Referansı yakapalama
+                var deletedEntity = context.Entry(entity);//Referansı yakalama, ki doğrudan veriye erişebilelim
                 deletedEntity.State = EntityState.Deleted;
                 context.SaveChanges();
             }

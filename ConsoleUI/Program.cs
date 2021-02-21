@@ -16,6 +16,13 @@ namespace ConsoleUI
                 Console.WriteLine("{0} - {1} - {2} - {3} - {4} - {5}",car.Id, car.BrandId, car.ColorId, car.ModelYear, car.DailyPrice, car.Description);
             }
 
+            foreach (var car in carManager.GetByColorId(2))
+            {
+                Console.WriteLine(car.Description);
+            }
+
+            
+
             //InMemorydenCalisma(carManager);           
         }
 
@@ -32,7 +39,7 @@ namespace ConsoleUI
             ListCars(carManager);
 
             Console.WriteLine("Sadece Belirtilen Arabanın Görüntülenmesi");
-            carManager.GetById(8);
+            carManager.GetByBrandId(8);
 
             Console.WriteLine("Silindikten Sonraki Liste");
             //carManager.Delete(8);
